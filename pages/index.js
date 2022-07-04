@@ -1,8 +1,7 @@
 import Head from "next/head";
 
 //add storyblok hook, storyblok client
-import { StoryblokComponent } from "@storyblok/react";
-import { storyblokApi } from "../lib/storyblok";
+import { getStoryblokApi, StoryblokComponent } from "@storyblok/react";
 
 export default function Home(props) {
   const story = props.story;
@@ -20,6 +19,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps({ preview = false }) {
+  const storyblokApi = getStoryblokApi();
   // home is the default slug for the homepage in Storyblok
   let slug = "home";
   // load the published content outside of the preview mode
